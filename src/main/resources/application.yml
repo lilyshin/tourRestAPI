@@ -10,4 +10,14 @@ spring:
     username: tour
     password: tour
 
-spring.devtools.livereload.enabled: true
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
