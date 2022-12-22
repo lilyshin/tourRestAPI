@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -26,22 +27,20 @@ public class City {
     @Column(insertable=true, updatable=false)
     private LocalDateTime regDate;
 
+    @ColumnDefault("0")
+    private Long viewCnt;
+
     @PrePersist
     protected void prePersist() {
         if (this.regDate == null) regDate = LocalDateTime.now();
     }
 
     @Builder
-    public City(Long cityCd, String cityNm, LocalDateTime regDate) {
+    public City(Long cityCd, String cityNm, LocalDateTime regDate, Long viewCnt) {
         this.cityCd = cityCd;
         this.cityNm = cityNm;
         this.regDate = regDate;
-    }
-
-    public void update(Long cityCd, String cityNm, LocalDateTime regDate) {
-        this.cityCd = cityCd;
-        this.cityNm = cityNm;
-        this.regDate = LocalDateTime.now();
+        this.viewCnt = viewCnt;
     }
 
 }

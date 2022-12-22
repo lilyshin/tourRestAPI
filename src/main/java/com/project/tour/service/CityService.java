@@ -3,7 +3,6 @@ package com.project.tour.service;
 import com.project.tour.entity.City;
 import com.project.tour.repository.CityRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -47,6 +46,11 @@ public class CityService {
         }
 
         cityRepository.deleteById(cityCd);
+    }
+
+    public Optional<City> findById(Long cityCd) {
+        Optional<City> entity = cityRepository.findById(cityCd);
+        return entity;
     }
 
     public List<City> findAllByUser(String userId) {
