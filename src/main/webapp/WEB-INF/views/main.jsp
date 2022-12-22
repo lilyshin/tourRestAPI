@@ -5,13 +5,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>REST</title>
+    <title>여행지(도시) 관리 REST API</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="/js/main.js"></script>
 </head>
 <body>
-<h3>여행지(도시) 관리 REST API</h3>
 <ul>
     <li>
         도시 API <br><br>
@@ -20,18 +19,17 @@
         사용자별 도시 목록 <input type="button" value="조회" id="getUesrCityList"><br>
         <div id="userCityList"></div><br><br>
         등록(POST) <input type="button" value="등록" id="createCity"><br>
-        <form id="createCityForm" method="post">도시명 <input type="text" name="cityNm" size="10"></form>
+        <form id="createCityForm" method="post">도시명 <input type="text" title="도시명" name="cityNm" size="10"></form>
         <br><br>
         수정(PUT) <input type="button" value="수정" id="updateCity"><br>
         <form id="updateCityForm">
-            도시코드 <input type="text" name="cityCd" size="5">
-            도시명 <input type="text" name="cityNm" size="5">
+            도시코드 <input type="text" title="도시코드" name="cityCd" size="5">
+            도시명 <input type="text" title="도시명" name="cityNm" size="5">
         </form>
         <br>
         삭제(DELETE) <input type="button" value="삭제" id="deleteCity">
         <form id="deleteCityForm">
-            도시코드 <input type="text" name="cityCd" size="5">
-            도시명 <input type="text" name="cityNm" size="5">
+            도시코드 <input type="text" title="도시코드" name="cityCd" size="5">
         </form>
     </li>
     <br><br>
@@ -55,7 +53,6 @@
         삭제(DELETE) <input type="button" value="삭제" id="deleteTour">
         <form id="deleteTourForm">
             여행지코드 <input type="text" name="tourCd" size="5">
-            여행지명 <input type="text" name="tourNm" size="5">
         </form>
     </li>
 </ul>
