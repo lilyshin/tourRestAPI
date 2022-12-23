@@ -22,11 +22,6 @@ public class TourController {
         return tourService.findAll();
     }
 
-    @GetMapping("/tour/{userId}")
-    public List<Tour> getUserTourList(@PathVariable("userId") String userId) {
-        return tourService.findAllByUser(userId);
-    }
-
     @PostMapping("/tour/create")
     public ResponseEntity createTour(@RequestBody Tour tour) {
         Tour entity = tourService.save(tour);

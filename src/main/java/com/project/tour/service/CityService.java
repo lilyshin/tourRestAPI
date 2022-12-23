@@ -55,7 +55,8 @@ public class CityService {
         return entity;
     }
 
-    public List<City> findAllByUser(String userId) {
-        return null;
-    }
+    /*public List<City> findListByUserId(String userId) {
+        List<City> list = findListByUserId(userId);
+        return list;
+    }*/
 }

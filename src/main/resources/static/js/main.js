@@ -7,7 +7,8 @@ $(document).ready(function(){
             dataType:'json',
             success: function(data) {
                 $("#cityList").empty();
-                var tr = '<thead>'+
+                var tr = '<table>' +
+                    '<thead>'+
                     '<tr>' +
                     '<th>도시코드 </th>'+
                     '<th>도시명 </th>'+
@@ -18,6 +19,8 @@ $(document).ready(function(){
                 $.each(data , function(i){
                     tr += '<td>' + data[i].cityCd + '</td><td>' + data[i].cityNm + '</td><td>' + moment(data[i].regDate).format('YYYY-MM-DD HH:mm:ss') + '</td><td>' + data[i].viewCnt + '</td></tr>';
                 });
+                tr += '</tbody>'+
+                    '</table>'
                 $("#cityList").append(tr);
             }
         });
@@ -109,7 +112,8 @@ $(document).ready(function(){
             dataType:'json',
             success: function(data) {
                 $("#tourList").empty();
-                var tr = '<thead>'+
+                var tr = '<table>' +
+                    '<thead>'+
                     '<tr>' +
                     '<th>여행코드 </th>'+
                     '<th>여행지명 </th>'+
@@ -118,10 +122,13 @@ $(document).ready(function(){
                     '<th>여행시작일자 </th>'+
                     '<th>여행종료일자 </th>'+
                     '</tr>'+
-                    '</thead>';
+                    '</thead>'+
+                    '<tbody>';
                 $.each(data , function(i){
                     tr += '<td>' + data[i].tourCd + '</td><td>' + data[i].tourNm + '</td><td>' + data[i].city.cityNm + '</td><td>' + data[i].user.userNm + '</td><td>' + data[i].tourStartDate + '</td><td>' + data[i].tourEndDate + '</td></tr>';
                 });
+                tr += '</tbody>'+
+                    '</table>'
                 $("#tourList").append(tr);
             }
         });

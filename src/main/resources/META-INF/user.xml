@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings
+        xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+        version="2.0">
+
+    <named-native-query name="CityRepository.findListByUserId"
+                        result-class="com.project.tour.repository.CityRepository">
+        <query>
+            select a.*
+                 , b.tourNm
+            from city a
+               , (select case when DATE_FORMAT(now(), '%Y%m%d') between tourStartDate and tourEndDate
+                                  then 'ing'
+                              when DATE_FORMAT(now(), '%Y%m%d') <![CDATA[<]]> tourStartDate
+                                  then 'plan'
+                              when DATE_FORMAT(now(), '%Y%m%d') <![CDATA[>]]> tourEndDate
+                                  then 'end'
+                end as status
+                       , cityCd
+                       , userId
+                       , tourCd
+                       , tourStartDate
+                       , tourEndDate
+                  from tour) b
+            where a.cityCd = b.cityCd
+            ORDER BY (case when B.STATUS = 'ing'  then abs(DATE_FORMAT(now(), '%Y%m%d') - tourStartDate)
+                           when b.status = 'plan' then abs(tourStartDate - DATE_FORMAT(now(), '%Y%m%d'))
+                           else DATE_FORMAT(now(), '%Y%m%d') end) desc
+                   , a.regDate desc
+        </query>
+    </named-native-query>
+</entity-mappings>

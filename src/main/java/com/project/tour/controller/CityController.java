@@ -22,10 +22,11 @@ public class CityController {
         return cityService.findAll();
     }
 
-    @GetMapping("/city/{userId}")
+    // TODO 사용자별 도시 목록 조회
+    /*@GetMapping("/city/{userId}")
     public List<City> getUserCityList(@PathVariable("userId") String userId) {
-        return cityService.findAllByUser(userId);
-    }
+        return cityService.findListByUserId(userId);
+    }*/
 
     @PostMapping("/city/create")
     public ResponseEntity createCtiy(@RequestBody City city) {

@@ -66,7 +66,4 @@ public class TourService {
         tourRepository.deleteById(tourCd);
     }
 
-    public List<Tour> findAllByUser(String userId) {
-        return null;
-    }
 }
