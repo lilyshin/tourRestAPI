@@ -220,6 +220,7 @@ $(document).ready(function(){
         });
     })
 
+    // form 입력 데이터 null check
     function submitFormNullCheck(form) {
         var chkVal = true;
         $("#"+form).find(':input').each(function(index) {
