@@ -45,6 +45,8 @@ public class CityService {
             throw new IllegalArgumentException("도시코드를 확인해 주세요.");
         }
 
+        // TODO 해당 도시코드와 매핑된 여행 데이터가 있으면 error
+
         cityRepository.deleteById(cityCd);
     }
 

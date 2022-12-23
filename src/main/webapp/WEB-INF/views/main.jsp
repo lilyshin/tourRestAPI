@@ -41,6 +41,7 @@
         <form id="createTourForm">
             여행명 <input type="text" title="여행명" name="tourNm" size="5">
             도시코드 <input type="text" title="도시코드" name="cityCd" size="5">
+            사용자ID <input type="text" title="사용자ID" name="userId" size="5">
             시작일자 <input type="text" title="시작일자" name="tourStartDate" size="10">
             종료일자 <input type="text" title="종료일자" name="tourEndDate" size="10">
         </form>
@@ -49,6 +50,9 @@
         <form id="updateTourForm">
             여행코드 <input type="text" title="여행코드" name="tourCd" size="5">
             여행명 <input type="text" title="여행명" name="tourNm" size="5">
+            도시코드 <input type="text" title="도시코드" name="cityCd" size="5">
+            시작일자 <input type="text" title="시작일자" name="tourStartDate" size="10">
+            종료일자 <input type="text" title="종료일자" name="tourEndDate" size="10">
         </form>
         <br>
         삭제(DELETE) <input type="button" value="삭제" id="deleteTour">

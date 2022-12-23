@@ -26,11 +26,17 @@ public class Tour {
     @Transient
     private Long cityCd;
 
-    @Column(insertable=true, updatable=false)
     private String tourStartDate;
 
-    @Column(insertable=true, updatable=false)
     private String tourEndDate;
+
+    @ManyToOne
+    @Setter
+    @JoinColumn(name="userId")
+    private User user;
+
+    @Transient
+    private String userId;
 
     @Builder
     public Tour(Long tourCd, String tourNm, City city, String tourStartDate, String tourEndDate) {

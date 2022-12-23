@@ -114,12 +114,13 @@ $(document).ready(function(){
                     '<th>여행코드 </th>'+
                     '<th>여행지명 </th>'+
                     '<th>도시코드 </th>'+
+                    '<th>사용자Id </th>'+
                     '<th>여행시작일자 </th>'+
                     '<th>여행종료일자 </th>'+
                     '</tr>'+
                     '</thead>';
                 $.each(data , function(i){
-                    tr += '<td>' + data[i].tourCd + '</td><td>' + data[i].tourNm + '</td><td>' + data[i].cityCd + '</td><td>' + data[i].tourStartDate + '</td><td>' + data[i].tourEndDate + '</td></tr>';
+                    tr += '<td>' + data[i].tourCd + '</td><td>' + data[i].tourNm + '</td><td>' + data[i].city.cityNm + '</td><td>' + data[i].user.userNm + '</td><td>' + data[i].tourStartDate + '</td><td>' + data[i].tourEndDate + '</td></tr>';
                 });
                 $("#tourList").append(tr);
             }
@@ -134,13 +135,14 @@ $(document).ready(function(){
 
         var tourNm = $("#createTourForm input[name='tourNm']").val();
         var cityCd = $("#createTourForm input[name='cityCd']").val();
+        var userId = $("#createTourForm input[name='userId']").val();
         var tourStartDate = $("#createTourForm input[name='tourStartDate']").val();
         var tourEndDate   = $("#createTourForm input[name='tourEndDate']").val();
 
         $.ajax({
             url:'/tour/create',
             type:'POST',
-            data:JSON.stringify({ tourNm: tourNm, cityCd: cityCd, tourStartDate: tourStartDate, tourEndDate: tourEndDate }),
+            data:JSON.stringify({ tourNm: tourNm, cityCd: cityCd, userId: userId, tourStartDate: tourStartDate, tourEndDate: tourEndDate }),
             dataType:'json',
             contentType: 'application/json',
             success : function (data, status){
@@ -164,11 +166,14 @@ $(document).ready(function(){
 
         var tourCd = $("#updateTourForm input[name='tourCd']").val();
         var tourNm = $("#updateTourForm input[name='tourNm']").val();
+        var cityCd = $("#updateTourForm input[name='cityCd']").val();
+        var tourStartDate = $("#updateTourForm input[name='tourStartDate']").val();
+        var tourEndDate   = $("#updateTourForm input[name='tourEndDate']").val();
 
         $.ajax({
             url:'/tour/update',
             type:'PUT',
-            data:JSON.stringify({ tourCd: tourCd, tourNm: tourNm }),
+            data:JSON.stringify({ tourCd: tourCd, tourNm: tourNm, cityCd: cityCd, tourStartDate: tourStartDate, tourEndDate: tourEndDate }),
             dataType:'json',
             contentType: 'application/json',
             success : function (data, status){
